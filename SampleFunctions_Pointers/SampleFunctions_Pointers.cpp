@@ -7,8 +7,15 @@ void MyFunction(int &x)
     x = 100;
 }
 
+void ReferenceSwap(int &x, int &y)
+{
+    int z = x;
+    x = y;
+    y = z;
+}
+
 //Passes by Pointers
-void Swap(int *a, int *b)
+void PointerSwap(int *a, int *b)
 {
     int x = *a;
     *a = *b;
@@ -17,17 +24,26 @@ void Swap(int *a, int *b)
 
 int main()
 {
-    int x = 10;
-    cout << "The value of x is = " << x << endl;
+    cout << "=====Pass by Reference=====" << endl;
+    int z = 10;
+    cout << "The value of x is = " << z << endl;
+    MyFunction(z);
+    cout << "The new value of x is = " << z << endl << endl;
 
-    MyFunction(x);
-    cout << "The new value of x is = " << x << endl << endl;
+    int x = 45, y = 35;
+    cout << "Before passing by reference" << endl;
+    cout << "Var X = " << x << ", Var Y = " << y << endl;
+    ReferenceSwap(x, y);
+    cout << "After passing by reference" << endl;
+    cout << "Var X = " << x << ", Var Y = " << y << endl << endl;
 
+    //-------------------------------------------
+    cout << "=====Pass by Pointer=====" << endl;
     int a = 45, b = 35;
     cout << "Before Passing to the function" << endl;
     cout << "Var A = " << a << ", Var B = " << b << endl;
 
-    Swap(&a, &b);
+    PointerSwap(&a, &b);
     cout << "After Passing to the function" << endl;
     cout << "Var A = " << a << ", Var B = " << b << endl;
 } 
